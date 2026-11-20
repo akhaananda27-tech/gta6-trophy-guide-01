@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Leonida Trophy Guide — GTA VI, all 55 trophies</title>
+<meta name="description" content="An offline guide and tracker for the 55 PlayStation 5 trophies of Grand Theft Auto VI: checklist, roadmap to the platinum, missables flagged, and a cited guide to each trophy.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a href="#tracker" class="skip-link" style="position:absolute;left:-999px;top:0;background:#1d2129;color:#fff;padding:10px 14px;z-index:10;" onfocus="this.style.left='8px'" onblur="this.style.left='-999px'">Skip to the tracker</a>
+<header class="masthead">
+  <div class="masthead-inner">
+    <p class="kicker">Grand Theft Auto VI · PlayStation 5</p>
+    <h1>Leonida Trophy Guide</h1>
+    <p class="sub">All 55 official trophies — a checklist that saves in your browser, a guide to each in our own words with its sources, a roadmap to the platinum, and the missables flagged before you pass them.</p>
+    <p class="listfacts">55 trophies · 1 platinum · 2 gold · 6 silver · 46 bronze · 28 hidden on PlayStation until earned</p>
+    <div class="progress-wrap">
+      <div class="progress-bar" role="progressbar" aria-label="Trophies earned"><div class="progress-fill" id="progress-fill"></div></div>
+      <span class="progress-text" id="progress-text">0 / 55 earned</span>
+      <span class="progress-sub" id="progress-sub">Platinum 0% — start the story</span>
+    </div>
+  </div>
+</header>
+
+<nav class="pagenav" aria-label="Sections">
+  <div class="pagenav-inner">
+    <a href="#tracker">Tracker</a>
+    <a href="#roadmap">Roadmap</a>
+    <a href="#missables">Missables</a>
+    <a href="#sources">Sources</a>
+  </div>
+</nav>
+
+<section class="controls" id="tracker" aria-label="Tracker controls">
+  <div class="controls-row">
+    <input class="search" id="search" type="search" placeholder="Search a trophy by name or description…" aria-label="Search trophies">
+    <label class="spoiler"><input type="checkbox" id="spoiler-toggle"> Spoiler-free mode</label>
+    <button class="btn" id="export-btn" type="button">Export progress</button>
+    <label class="btn ghost import-label" for="import-file">Import progress<input id="import-file" type="file" accept="application/json,.json"></label>
+    <button class="btn ghost" id="reset-btn" type="button">Reset</button>
+  </div>
+  <div class="controls-row" style="margin-top:10px">
+    <div class="chips" id="kind-chips" role="group" aria-label="Filter by kind">
+      <button class="chip" type="button" data-kind="all" aria-pressed="true">All 55</button>
+      <button class="chip" type="button" data-kind="story" aria-pressed="false">Story</button>
+      <button class="chip" type="button" data-kind="missable" aria-pressed="false">Missable</button>
+      <button class="chip" type="button" data-kind="collectibles" aria-pressed="false">Collectibles</button>
+      <button class="chip" type="button" data-kind="activities" aria-pressed="false">Activities</button>
+      <button class="chip" type="button" data-kind="challenge" aria-pressed="false">Challenge</button>
+      <button class="chip" type="button" data-kind="platinum" aria-pressed="false">Platinum</button>
+    </div>
+  </div>
+  <p class="result-count" id="result-count"></p>
+</section>
+
+<main class="layout">
+  <section class="panel" aria-label="Trophy checklist">
+    <div class="panel-head"><h2>Trophy checklist</h2><span id="checklist-count"></span></div>
+    <ul class="trophy-list" id="checklist"></ul>
+    <p class="empty-note" id="checklist-empty" hidden>No trophies match this filter. Clear the search or pick another kind.</p>
+  </section>
+
+  <aside class="panel detail-panel" aria-label="Trophy guide">
+    <div class="panel-head"><h2>Guide</h2><span>Tap a trophy to read it</span></div>
+    <div class="detail-body" id="detail"></div>
+  </aside>
+</main>
+
+<section class="section" id="roadmap">
+  <h2>Roadmap to the platinum</h2>
+  <p class="lede">The order to earn them in, built from the official descriptions: play the story first, then the strangers and friends, then activities and challenges, then collectibles, then money — and clean up 100% last. The platinum unlocks when the other 54 are done.</p>
+  <div class="stages" id="roadmap-stages"></div>
+</section>
+
+<section class="section" id="missables">
+  <h2>Missable trophies — do these in time</h2>
+  <p class="lede">Only a few trophies can be missed, and they are flagged here from the official descriptions. Everything else can be earned any time after its content unlocks. The exact missions are not yet verified in the game — treat the flags as a warning, not a promise.</p>
+  <div id="missable-list"></div>
+  <p class="note"><strong>Easy to miss, not missable:</strong> “The Truth Is Out There” (a strange hidden moment — keep an eye out while exploring) and “Bad Luck, I Guess” (a second attempt pays off). Neither is tied to a one-time story beat in its description, so both can be chased after the story.</p>
+</section>
+
+<footer class="site-footer" id="sources">
+  <h2>Sources &amp; honesty note</h2>
+  <ul>
+    <li><a href="https://www.exophase.com/game/grand-theft-auto-vi-psn/trophies/">Exophase — GTA VI trophy list</a>: every trophy's official name, description and grade.</li>
+    <li><a href="https://psnprofiles.com/trophies/43531-grand-theft-auto-vi">PSNProfiles — GTA VI trophies</a>: grades and PSN's progress counts where one exists (for example 42 Shooting Range challenges).</li>
+    <li>Every guide on this page is our own words, written from the official description. Specific locations, counts and steps that no source pins down are marked as not yet verified in the game — a cited guide beats an uncited one, however detailed.</li>
+    <li>This guide is not affiliated with Rockstar Games. It shows no Rockstar logo, official artwork, box art or screenshot of the game. It works offline from its own files and makes no network request.</li>
+  </ul>
+  <p>Progress is saved only in this browser (localStorage). Export it to a file to keep a backup or move it to another browser.</p>
+</footer>
+
+<script type="module" src="js/main.js"></script>
+</body>
+</html>
