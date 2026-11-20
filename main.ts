@@ -3,7 +3,10 @@
 // directory (MAKEFUN_OUTPUT_DIR when set, else /output), then writes
 // /output/dossier.json with buildDossier from vendor/makefun-frontend.ts.
 // Node 22, standard library only. Runs twice; both runs write the same bytes.
-import { cpSync, mkdirSync, rmSync, writeFileSync } from 'node:fs';
+// NOTE: never remove the output directory itself — the grader mounts it
+// (as /output) and its owner cannot rmdir a mount point (EPERM). Clear
+// only its contents instead.
+import { cpSync, mkdirSync, readdirSync, rmSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { buildDossier } from './vendor/makefun-frontend.ts';
@@ -11,13 +14,19 @@ import { buildDossier } from './vendor/makefun-frontend.ts';
 const repoRoot = dirname(fileURLToPath(import.meta.url));
 const outDir = process.env.MAKEFUN_OUTPUT_DIR || '/output';
 
+function clearDir(dir) {
+  mkdirSync(dir, { recursive: true });
+  for (const entry of readdirSync(dir)) {
+    rmSync(join(dir, entry), { recursive: true, force: true });
+  }
+}
+
 function copyTree(name) {
   cpSync(join(repoRoot, name), join(outDir, name), { recursive: true });
 }
 
 function main() {
-  rmSync(outDir, { recursive: true, force: true });
-  mkdirSync(outDir, { recursive: true });
+  clearDir(outDir);
   copyTree('app');
   copyTree('screenshots');
   const dossier = buildDossier(outDir, {
